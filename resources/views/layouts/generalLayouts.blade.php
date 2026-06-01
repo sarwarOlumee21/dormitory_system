@@ -69,6 +69,7 @@ data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
   <script src="{{ asset('app-assets/js/core/app.js') }}" type="text/javascript"></script>
   <script src="{{ asset('app-assets/js/scripts/customizer.js') }}" type="text/javascript"></script>
   <!-- END MODERN JS-->
+  @include('partials.demo_preview_modal')
   <!-- BEGIN PAGE LEVEL JS-->
   <script src="{{ asset('app-assets/js/scripts/pages/dashboard-sales.js') }}" type="text/javascript"></script>
   <!-- END PAGE LEVEL JS-->

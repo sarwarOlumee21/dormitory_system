@@ -2,20 +2,45 @@
 
 use App\Http\Controllers\ResidentController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContractsController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\VisitorController;
+use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SettingsController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', [ResidentController::class, 'index'])->name('home');
 
-Route::get('/home', [ResidentController::class, 'index'])->name('home');
-Route::get('/resident/resident_register', [ResidentController::class, 'ResidentRegister'])->name('resident.register');
-Route::get('/resident/resident_list',[
-    ResidentController::class, 'ResidentList'
-])->name('resident.list');
+Route::prefix('resident')->name('resident.')->group(function () {
+    Route::get('/resident_register', [ResidentController::class, 'ResidentRegister'])->name('register');
+    Route::get('/resident_list', [ResidentController::class, 'ResidentList'])->name('list');
+});
+
+Route::prefix('contracts')->name('contracts.')->group(function () {
+    Route::get('/contracts_register', [ContractsController::class, 'ContractsRegister'])->name('register');
+    Route::get('/contracts_list', [ContractsController::class, 'ContractsList'])->name('list');
+});
+
+Route::prefix('rooms')->name('rooms.')->group(function () {
+    Route::get('/room_register', [RoomController::class, 'RoomRegister'])->name('register');
+    Route::get('/room_list', [RoomController::class, 'RoomList'])->name('list');
+});
+
+Route::prefix('visitors')->name('visitors.')->group(function () {
+    Route::get('/register', [VisitorController::class, 'register'])->name('register');
+    Route::get('/list', [VisitorController::class, 'list'])->name('list');
+});
+
+Route::prefix('maintenance')->name('maintenance.')->group(function () {
+    Route::get('/register', [MaintenanceController::class, 'register'])->name('register');
+    Route::get('/list', [MaintenanceController::class, 'list'])->name('list');
+});
+
+Route::prefix('announcements')->name('announcements.')->group(function () {
+    Route::get('/register', [AnnouncementController::class, 'register'])->name('register');
+    Route::get('/list', [AnnouncementController::class, 'list'])->name('list');
+});
+
+Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
