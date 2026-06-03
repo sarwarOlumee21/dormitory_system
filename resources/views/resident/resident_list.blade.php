@@ -2,147 +2,200 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col-12">
-        <div class="card shadow-sm border-0">
-            <div class="card-content collapse show">
-                <div class="card-body">
+<style>
+.page-banner {
+    background: linear-gradient(135deg, #1a56db 0%, #1e3a8a 100%);
+    border-radius: 16px;
+    padding: 28px 28px 36px;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+}
+.page-banner::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+}
+.page-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 40px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+}
+.banner-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,.18);
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+.banner-icon i {
+    font-size: 22px;
+}
+.card-soft {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: -32px;
+    box-shadow: 0 24px 40px rgba(15, 23, 42, 0.06);
+}
+.stats-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    transition: transform .2s ease;
+}
+.stats-card:hover {
+    transform: translateY(-2px);
+}
+.stats-card .card-body {
+    padding: 20px;
+}
+.filter-card {
+    background: #f8fafc;
+    border: 1px solid #dbeafe;
+    border-radius: 16px;
+}
+.table-responsive {
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+}
+.table thead th {
+    background: #1a56db;
+    color: #fff;
+    border: 0;
+    vertical-align: middle;
+}
+.table tbody tr:hover {
+    background: #f8fafc;
+}
+.table td,
+.table th {
+    vertical-align: middle;
+}
+.table .badge {
+    font-size: .8rem;
+}
+</style>
 
-                    <div class="text-left mb-3">
-                        <a href="{{ route('resident.register') }}" class="btn btn-primary btn-sm">
-                            <i class="la la-plus"></i> ثبت ساکن جدید
-                        </a>
+<div class="row justify-content-center">
+    <div class="col-12 col-xl-10">
+
+        <div class="page-banner">
+            <div class="banner-icon">
+                <i class="la la-users text-white"></i>
+            </div>
+            <h5 class="mb-1 font-weight-bold" style="direction:rtl;">لیست ساکنین</h5>
+            <p class="mb-0 text-white-75" style="direction:rtl;">تمام ساکنین، اطلاعات اتاق و وضعیت قرارداد را در یک نگاه ببینید.</p>
+        </div>
+
+        <div class="card-soft">
+
+            <div class="filter-card p-3 mb-4">
+                <div class="row gx-2 gy-2 align-items-end">
+                    <div class="col-md-10">
+                        <label class="form-label fw-bold" style="direction:rtl;">جستجو</label>
+                        <input type="text" id="filterResident" class="form-control border-primary" placeholder="نام، اتاق، تلفن...">
                     </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-4 col-6 mb-2">
-                            <div class="card border mb-0">
-                                <div class="card-body py-2 d-flex align-items-center">
-                                    <span class="badge badge-primary badge-pill p-2 mr-2"><i class="la la-users font-medium-3"></i></span>
-                                    <div>
-                                        <h3 class="mb-0 font-weight-bold">۴۸</h3>
-                                        <small class="text-muted">کل ساکنین</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-6 mb-2">
-                            <div class="card border mb-0">
-                                <div class="card-body py-2 d-flex align-items-center">
-                                    <span class="badge badge-success badge-pill p-2 mr-2"><i class="la la-check font-medium-3"></i></span>
-                                    <div>
-                                        <h3 class="mb-0 font-weight-bold">۴۵</h3>
-                                        <small class="text-muted">با قرارداد فعال</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <div class="card border mb-0">
-                                <div class="card-body py-2 d-flex align-items-center">
-                                    <span class="badge badge-warning badge-pill p-2 mr-2"><i class="la la-user font-medium-3"></i></span>
-                                    <div>
-                                        <h3 class="mb-0 font-weight-bold">۳</h3>
-                                        <small class="text-muted">بدون اتاق</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-primary btn-block" id="btnFilterResident">
+                            <i class="la la-search"></i> جستجو
+                        </button>
                     </div>
-
-                    <div class="card border-primary bg-light mb-3">
-                        <div class="card-body py-2">
-                            <div class="row">
-                                <div class="col-md-10 form-group mb-0">
-                                    <input type="text" id="filterResident" class="form-control border-primary" placeholder="جستجو: نام، اتاق، تلفن...">
-                                </div>
-                                <div class="col-md-2 form-group mb-0">
-                                    <button type="button" class="btn btn-primary btn-block" id="btnFilterResident">
-                                        <i class="la la-search"></i> جستجو
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover table-bordered mb-0" id="residentsTable">
-                            <thead class="bg-primary white">
-                                <tr>
-                                    <th class="border-0">#</th>
-                                    <th class="border-0">کد</th>
-                                    <th class="border-0">نام کامل</th>
-                                    <th class="border-0">نام پدر</th>
-                                    <th class="border-0">شهر</th>
-                                    <th class="border-0">نمبر اتاق</th>
-                                    <th class="border-0">شغل</th>
-                                    <th class="border-0">شماره تلیفون</th>
-                                    <th class="border-0">موقعیت شغل</th>
-                                    <th class="border-0 text-center">عملیات</th>
-                                </tr>
-                            </thead>
-                            <tbody id="residentsBody">
-                                <tr data-search="1001 احمد نوری محمد نوری کابل A-12 محصل 0700123456 پوهنتون کابل">
-                                    <td>۱</td>
-                                    <td><span class="badge badge-primary">1001</span></td>
-                                    <td class="font-weight-bold">احمد نوری</td>
-                                    <td>محمد نوری</td>
-                                    <td>کابل</td>
-                                    <td><span class="badge badge-info">A-12</span></td>
-                                    <td>محصل</td>
-                                    <td dir="ltr" class="text-right">0700123456</td>
-                                    <td>پوهنتون کابل</td>
-                                    <td class="text-center text-nowrap">
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="{{ route('contracts.register') }}" class="btn btn-outline-success" title="قرارداد"><i class="la la-file-text"></i></a>
-                                            <button class="btn btn-outline-primary"><i class="la la-eye"></i></button>
-                                            <button class="btn btn-outline-info"><i class="la la-edit"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr data-search="1002 علی رحیمی عبدالرحیم هرات B-07 کارمند 0700554433 شرکت خصوصی">
-                                    <td>۲</td>
-                                    <td><span class="badge badge-primary">1002</span></td>
-                                    <td class="font-weight-bold">علی رحیمی</td>
-                                    <td>عبدالرحیم</td>
-                                    <td>هرات</td>
-                                    <td><span class="badge badge-info">B-07</span></td>
-                                    <td>کارمند</td>
-                                    <td dir="ltr" class="text-right">0700554433</td>
-                                    <td>شرکت خصوصی</td>
-                                    <td class="text-center text-nowrap">
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="{{ route('contracts.register') }}" class="btn btn-outline-success"><i class="la la-file-text"></i></a>
-                                            <button class="btn btn-outline-primary"><i class="la la-eye"></i></button>
-                                            <button class="btn btn-outline-info"><i class="la la-edit"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr data-search="1003 حسین احمدی کریم احمدی کابل C-03 دانشجو 0788991122 پلی تکنیک">
-                                    <td>۳</td>
-                                    <td><span class="badge badge-primary">1003</span></td>
-                                    <td class="font-weight-bold">حسین احمدی</td>
-                                    <td>کریم احمدی</td>
-                                    <td>کابل</td>
-                                    <td><span class="badge badge-info">C-03</span></td>
-                                    <td>دانشجو</td>
-                                    <td dir="ltr" class="text-right">0788991122</td>
-                                    <td>پوهنتون پلی‌تکنیک</td>
-                                    <td class="text-center text-nowrap">
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="{{ route('contracts.register') }}" class="btn btn-outline-success"><i class="la la-file-text"></i></a>
-                                            <button class="btn btn-outline-primary"><i class="la la-eye"></i></button>
-                                            <button class="btn btn-outline-info"><i class="la la-edit"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
                 </div>
             </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover mb-0" id="residentsTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>کد</th>
+                            <th>نام کامل</th>
+                            <th>نام پدر</th>
+                            <th>شهر</th>
+                            <th>نمبر اتاق</th>
+                            <th>شغل</th>
+                            <th>شماره تلیفون</th>
+                            <th>موقعیت شغل</th>
+                            <th class="text-center">عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="residentsBody">
+                        <tr data-search="1001 احمد نوری محمد نوری کابل A-12 محصل 0700123456 پوهنتون کابل">
+                            <td>۱</td>
+                            <td><span class="badge badge-primary">1001</span></td>
+                            <td class="font-weight-bold">احمد نوری</td>
+                            <td>محمد نوری</td>
+                            <td>کابل</td>
+                            <td><span class="badge badge-info">A-12</span></td>
+                            <td>محصل</td>
+                            <td dir="ltr" class="text-right">0700123456</td>
+                            <td>پوهنتون کابل</td>
+                            <td class="text-center text-nowrap">
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <a href="{{ route('contracts.register') }}" class="btn btn-outline-success" title="قرارداد"><i class="la la-file-text"></i></a>
+                                    <button class="btn btn-outline-primary" type="button"><i class="la la-eye"></i></button>
+                                    <button class="btn btn-outline-info" type="button"><i class="la la-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-search="1002 علی رحیمی عبدالرحیم هرات B-07 کارمند 0700554433 شرکت خصوصی">
+                            <td>۲</td>
+                            <td><span class="badge badge-primary">1002</span></td>
+                            <td class="font-weight-bold">علی رحیمی</td>
+                            <td>عبدالرحیم</td>
+                            <td>هرات</td>
+                            <td><span class="badge badge-info">B-07</span></td>
+                            <td>کارمند</td>
+                            <td dir="ltr" class="text-right">0700554433</td>
+                            <td>شرکت خصوصی</td>
+                            <td class="text-center text-nowrap">
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <a href="{{ route('contracts.register') }}" class="btn btn-outline-success"><i class="la la-file-text"></i></a>
+                                    <button class="btn btn-outline-primary" type="button"><i class="la la-eye"></i></button>
+                                    <button class="btn btn-outline-info" type="button"><i class="la la-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-search="1003 حسین احمدی کریم احمدی کابل C-03 دانشجو 0788991122 پلی تکنیک">
+                            <td>۳</td>
+                            <td><span class="badge badge-primary">1003</span></td>
+                            <td class="font-weight-bold">حسین احمدی</td>
+                            <td>کریم احمدی</td>
+                            <td>کابل</td>
+                            <td><span class="badge badge-info">C-03</span></td>
+                            <td>دانشجو</td>
+                            <td dir="ltr" class="text-right">0788991122</td>
+                            <td>پوهنتون پلی‌تکنیک</td>
+                            <td class="text-center text-nowrap">
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <a href="{{ route('contracts.register') }}" class="btn btn-outline-success"><i class="la la-file-text"></i></a>
+                                    <button class="btn btn-outline-primary" type="button"><i class="la la-eye"></i></button>
+                                    <button class="btn btn-outline-info" type="button"><i class="la la-edit"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
+
     </div>
 </div>
 

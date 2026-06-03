@@ -229,7 +229,7 @@ footer.footer-dark {
           .main-menu.menu-light .navigation > li.hover > a.mm-next, .main-menu.menu-light .navigation > li:hover > a.mm-next, .main-menu.menu-light .navigation > li.active > a.mm-next {
             background-color: inherit; }
         .main-menu.menu-light .navigation > li.active > a {
-          color: #6B6F82;
+          color: #1b3098;
           font-weight: 700;
           background: #f0f0f0; }
         .main-menu.menu-light .navigation > li .active {
@@ -353,13 +353,13 @@ footer.footer-dark {
           .main-menu.menu-dark .navigation > li.hover > a.mm-next, .main-menu.menu-dark .navigation > li:hover > a.mm-next, .main-menu.menu-dark .navigation > li.active > a.mm-next {
             background-color: inherit; }
         .main-menu.menu-dark .navigation > li.active > a {
-          color: #dcdcdc;
+          color: #fafafa;
           font-weight: 700;
           background: #1f2229; }
         .main-menu.menu-dark .navigation > li .active {
           background: #1f2229; }
           .main-menu.menu-dark .navigation > li .active > a {
-            color: #f6f6f6;
+            color: #fafafa;
             font-weight: 700;
             background: #1f2229; }
           .main-menu.menu-dark .navigation > li .active .hover > a {
@@ -390,7 +390,7 @@ footer.footer-dark {
           .main-menu.menu-dark .navigation > li ul .active {
             background: transparent; }
             .main-menu.menu-dark .navigation > li ul .active > a {
-              color: #f6f6f6;
+              color: #fafafa;
               font-weight: 700; }
             .main-menu.menu-dark .navigation > li ul .active .hover > a {
               background-color: transparent; }
@@ -418,7 +418,7 @@ footer.footer-dark {
       .main-menu.menu-dark ul.menu-popout .active {
         font-weight: 700; }
         .main-menu.menu-dark ul.menu-popout .active > a {
-          color: #f6f6f6; }
+          color: #fafafa; }
         .main-menu.menu-dark ul.menu-popout .active .hover > a, .main-menu.menu-dark ul.menu-popout .active :hover > a {
           background-color: transparent; }
   .main-menu.menu-fixed {

@@ -444,7 +444,7 @@ footer.footer-dark {
 }
 .main-menu.menu-dark {
   color : #DCDCDC;
-  background : #2C303B;
+  background : #172554;
 }
 .main-menu.menu-dark .main-menu-header {
   padding : 20px;
@@ -458,7 +458,7 @@ footer.footer-dark {
   border-color : #0B0C0F;
 }
 .main-menu.menu-dark .navigation {
-  background : #2C303B;
+  background : #172554;
 }
 .main-menu.menu-dark .navigation .navigation-header {
   color : #DCDCDC;
@@ -539,7 +539,7 @@ footer.footer-dark {
   background-color : inherit;
 }
 .main-menu.menu-dark .navigation > li.active > a {
-  color : #DCDCDC;
+  color : #FCFCFC;
   font-weight : 700;
   background : #1F2229;
 }
@@ -547,7 +547,7 @@ footer.footer-dark {
   background : #1F2229;
 }
 .main-menu.menu-dark .navigation > li .active > a {
-  color : #F6F6F6;
+  color : #fafafa;
   font-weight : 700;
   background : #1F2229;
 }
@@ -591,17 +591,17 @@ footer.footer-dark {
   background : transparent;
 }
 .main-menu.menu-dark .navigation > li ul .active > a {
-  color : #F6F6F6;
+  color : #fafafa;
   font-weight : 700;
 }
 .main-menu.menu-dark .navigation > li ul .active .hover > a {
   background-color : transparent;
 }
 .main-menu.menu-dark .navigation > li > ul {
-  background : #2C303B;
+  background : #172554;
 }
 .main-menu.menu-dark ul.menu-popout {
-  background : #2C303B;
+  background : #172554;
 }
 .main-menu.menu-dark ul.menu-popout li a {
   color : #DCDCDC;
@@ -632,7 +632,7 @@ footer.footer-dark {
   font-weight : 700;
 }
 .main-menu.menu-dark ul.menu-popout .active > a {
-  color : #F6F6F6;
+  color : #fafafa;
 }
 .main-menu.menu-dark ul.menu-popout .active .hover > a, .main-menu.menu-dark ul.menu-popout .active :hover > a {
   background-color : transparent;

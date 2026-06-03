@@ -1,4 +1,4 @@
-  <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-dark navbar-shadow">
+  <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-light navbar-shadow">
     <div class="navbar-wrapper">
       <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
@@ -9,7 +9,7 @@
               <h3 class="brand-text">  لیلیه خصوصی اندیشه</h3>
             </a>
           </li>
-          <li class="nav-item d-none d-md-block float-right"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="toggle-icon ft-toggle-right font-medium-3 white" data-ticon="ft-toggle-right"></i></a></li>
+          <li class="nav-item d-none d-md-block float-right"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="toggle-icon ft-toggle-right font-medium-3 " data-ticon="ft-toggle-right"></i></a></li>
           <li class="nav-item d-md-none">
             <a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="la la-ellipsis-v"></i></a>
           </li>
