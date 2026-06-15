@@ -2,83 +2,6 @@
 
 @section('content')
 
-<style>
-.top-banner {
-    background: linear-gradient(135deg, #1a56db 0%, #1e3a8a 100%);
-    border-radius: 16px 16px 0 0;
-    padding: 28px 28px 48px;
-    position: relative;
-    overflow: hidden;
-}
-.top-banner::before {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.07);
-}
-.top-banner::after {
-    content: '';
-    position: absolute;
-    bottom: -30px; left: 60px;
-    width: 120px; height: 120px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.05);
-}
-.banner-icon {
-    width: 48px; height: 48px;
-    background: rgba(255,255,255,.18);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 14px;
-}
-.form-outer {
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-top: none;
-    border-radius: 0 0 16px 16px;
-    padding: 28px;
-}
-.section-pill {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: #e8f0fe;
-    border-radius: 20px;
-    padding: 5px 14px 5px 10px;
-    margin-bottom: 18px;
-    direction: rtl;
-}
-.section-pill i    { font-size: 15px; color: #1a56db; }
-.section-pill span { font-size: 12px; font-weight: 600; color: #1a56db; }
-.finput {
-    width: 100%;
-    padding: 9px 12px;
-    font-size: 13.5px;
-    direction: rtl;
-    border: 1.5px solid #e2e8f0;
-    border-radius: 10px;
-    background: #fff;
-    color: #1e293b;
-    outline: none;
-    transition: border-color .2s, box-shadow .2s;
-}
-.finput:focus {
-    border-color: #1a56db;
-    box-shadow: 0 0 0 3px rgba(26,86,219,.1);
-}
-.finput:hover:not(:focus) { border-color: #94a3b8; }
-.flabel {
-    font-size: 12.5px; font-weight: 600;
-    color: #475569;
-    direction: rtl;
-    margin-bottom: 5px;
-    display: flex; align-items: center; gap: 5px;
-}
-.flabel i { color: #1a56db; }
-.required-star { color: #e24b4a; }
-.sep { height: 1px; background: #f1f5f9; margin: 22px 0; }
-</style>
-
 <div class="row justify-content-center">
   <div class="col-12 col-xl-9">
 
@@ -145,6 +68,32 @@
           <div class="col-12 mb-0">
             <label class="flabel"><i class="la la-map-pin"></i> موقعیت شغل</label>
             <input type="text" class="finput" name="occupation_location" placeholder="آدرس کامل محل کار">
+          </div>
+        </div>
+
+        <div class="sep"></div>
+
+        <div class="section-pill">
+          <i class="la la-user"></i>
+          <span>ضامن</span>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="flabel"><i class="la la-user"></i> نام ضامن <span class="required-star">*</span></label>
+            <input type="text" class="finput" name="guarantor_name" placeholder="نام و تخلص ضامن">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="flabel"><i class="la la-male"></i> نام پدر ضامن <span class="required-star">*</span></label>
+            <input type="text" class="finput" name="guarantor_father_name" placeholder="نام پدر ضامن">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="flabel"><i class="la la-phone"></i> شماره تلیفون ضامن <span class="required-star">*</span></label>
+            <input type="text" class="finput" name="guarantor_phone" placeholder="07xx-xxx-xxxx">
+          </div>
+          <div class="col-md-6 mb-0">
+            <label class="flabel"><i class="la la-briefcase"></i> موقعیت شغلی ضامن</label>
+            <input type="text" class="finput" name="guarantor_occupation" placeholder="عنوان یا موقعیت شغلی ضامن">
           </div>
         </div>
 

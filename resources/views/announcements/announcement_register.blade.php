@@ -1,6 +1,6 @@
 @extends('layouts.generalLayouts')
 @section('content')
-<div class="row"><div class="col-12"><div class="card shadow-sm border-0">
+<!-- <div class="row"><div class="col-12"><div class="card shadow-sm border-0">
 <div class="card-content collapse show"><div class="card-body">
 <form>
 <div class="card border mb-0">
@@ -42,4 +42,8 @@
 </div>
 </form>
 </div></div></div></div></div>
+ -->
+<div>
+    <h1>for future</h1>
+</div>
 @endsection

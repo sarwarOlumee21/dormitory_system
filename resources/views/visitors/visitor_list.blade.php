@@ -1,29 +1,133 @@
 @extends('layouts.generalLayouts')
+
 @section('content')
-<div class="row"><div class="col-12"><div class="card shadow-sm border-0">
-<div class="card-content collapse show"><div class="card-body">
-<div class="text-left mb-3"><a href="{{ route('visitors.register') }}" class="btn btn-primary btn-sm"><i class="la la-plus"></i> ثبت مهمان</a></div>
-<div class="row mb-3">
-<div class="col-md-4"><div class="card border mb-0"><div class="card-body py-2 d-flex align-items-center">
-<span class="badge badge-info badge-pill p-2 mr-2"><i class="la la-users font-medium-3"></i></span>
-<div><h3 class="mb-0 font-weight-bold">۲</h3><small class="text-muted">مهمان فعال (داخل)</small></div></div></div></div>
-<div class="col-md-4"><div class="card border mb-0"><div class="card-body py-2 d-flex align-items-center">
-<span class="badge badge-primary badge-pill p-2 mr-2"><i class="la la-history font-medium-3"></i></span>
-<div><h3 class="mb-0 font-weight-bold">۱۵</h3><small class="text-muted">کل بازدیدها (ماه جاری)</small></div></div></div></div>
-<div class="col-md-4"><div class="card border mb-0"><div class="card-body py-2 d-flex align-items-center">
-<span class="badge badge-success badge-pill p-2 mr-2"><i class="la la-sign-out font-medium-3"></i></span>
-<div><h3 class="mb-0 font-weight-bold">۱۳</h3><small class="text-muted">خروج ثبت‌شده</small></div></div></div></div>
+
+<div class="row" style="direction: rtl;">
+    <div class="col-12">
+
+        {{-- بنر بالایی صفحه با استایل مدرن، مینیمال و یکپارچه --}}
+        <div class="top-banner mb-4" style="background: #1a56db; border-radius: 12px; padding: 20px; color: #ffffff;">
+            <div class="d-flex flex-wrap align-items-center justify-content-between">
+                <div class="d-flex align-items-center mb-2 mb-md-0">
+                    <div class="banner-icon ml-3" style="background: rgba(255,255,255,0.2); width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <i class="la la-users text-white" style="font-size:22px;"></i>
+                    </div>
+                    <div>
+                        <h5 class="text-white mb-1 font-weight-bold">مدیریت و لیست مهمانان</h5>
+                        <p class="mb-0" style="color:rgba(255,255,255,.75); font-size:13px;">مشاهده وضعیت حضور، ثبت خروج و تاریخچه رفت‌وامد مهمانان</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="{{ route('visitors.register') }}" class="btn btn-white text-primary font-weight-bold px-4" style="background: #ffffff; border-radius: 8px; border: none; height: 40px; display: flex; align-items: center;">
+                        <i class="la la-plus ml-1" style="font-size: 16px;"></i> ثبت مهمان جدید
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {{-- استایل‌های اختصاصی پالت رنگی سازمانی آبی --}}
+        <style>
+            .custom-card {
+                background: #ffffff;
+                border: 1px solid #e2e8f0 !important;
+                border-radius: 12px !important;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+                margin-bottom: 25px;
+                overflow: hidden;
+            }
+            .table thead th {
+                background-color: #1a56db !important;
+                color: #ffffff !important;
+                font-weight: 600;
+                font-size: 13px;
+                border: none !important;
+                padding: 14px 10px;
+            }
+            .table tbody td {
+                padding: 12px 10px;
+                vertical-align: middle;
+                font-size: 13px;
+                color: #334155;
+                border-bottom: 1px solid #f1f5f9 !important;
+            }
+            .badge-custom-blue { background: rgba(26, 86, 219, 0.1); color: #1a56db; font-weight: 600; border-radius: 6px; padding: 5px 10px; }
+            .badge-custom-green { background: rgba(4, 120, 87, 0.1); color: #047857; font-weight: 600; border-radius: 6px; padding: 5px 10px; }
+            .badge-custom-slate { background: rgba(100, 116, 139, 0.1); color: #64748b; font-weight: 600; border-radius: 6px; padding: 5px 10px; }
+            
+            .btn-action-out {
+                background: #047857;
+                color: #ffffff;
+                border: none;
+                border-radius: 6px;
+                padding: 6px 12px;
+                font-size: 12px;
+                font-weight: 600;
+                transition: background 0.2s;
+            }
+            .btn-action-out:hover {
+                background: #065f46;
+                color: #ffffff;
+            }
+        </style>
+
+        {{-- جدول نمایش داده‌ها درون کارد مینیمال --}}
+        <div class="card custom-card">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>نام مهمان</th>
+                            <th>ساکن میزبان</th>
+                            <th>نمبر اتاق</th>
+                            <th>تاریخ و ساعت ورود</th>
+                            <th>تاریخ و ساعت خروج</th>
+                            <th>وضعیت حضور</th>
+                            <th class="text-center">عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{-- ردیف اول --}}
+                        <tr>
+                            <td>۱</td>
+                            <td class="font-weight-bold">فاطمه nori</td>
+                            <td>احمد نوری</td>
+                            <td><span class="badge-custom-blue">A-12</span></td>
+                            <td dir="ltr" class="text-right">1404/03/10 14:00</td>
+                            <td class="text-muted">—</td>
+                            <td><span class="badge-custom-blue"><i class="la la-sign-in"></i> داخل خوابگاه</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-action-out"><i class="la la-sign-out"></i> ثبت خروج</button>
+                            </td>
+                        </tr>
+                        {{-- ردیف دوم --}}
+                        <tr>
+                            <td>۲</td>
+                            <td class="font-weight-bold">محمد رحیمی</td>
+                            <td>علی رحیمی</td>
+                            <td><span class="badge-custom-blue">B-07</span></td>
+                            <td dir="ltr" class="text-right">1404/03/09 10:30</td>
+                            <td dir="ltr" class="text-right">1404/03/09 18:00</td>
+                            <td><span class="badge-custom-slate"><i class="la la-power-off"></i> خروج کرده</span></td>
+                            <td class="text-center">
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <button type="button" class="btn btn-outline-primary" style="border-radius: 6px;" title="مشاهده جزئیات"><i class="la la-eye"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="card-footer bg-light d-flex align-items-center justify-content-between flex-wrap py-3" style="border-top: 1px solid #e2e8f0;">
+                <span class="text-muted font-small-3">نمایش لیست فعال مهمانان</span>
+                <span class="text-muted font-small-3">
+                    <i class="la la-info-circle text-primary"></i> برای ثبت مهمان جدید از دکمه بالا استفاده کنید.
+                </span>
+            </div>
+        </div>
+
+    </div>
 </div>
-<div class="table-responsive"><table class="table table-striped table-hover table-bordered mb-0">
-<thead class="bg-primary white"><tr>
-<th class="border-0">#</th><th class="border-0">مهمان</th><th class="border-0">میزبان</th><th class="border-0">اتاق</th>
-<th class="border-0">ورود</th><th class="border-0">خروج</th><th class="border-0">وضعیت</th><th class="border-0 text-center">عملیات</th>
-</tr></thead>
-<tbody>
-<tr><td>۱</td><td class="font-weight-bold">فاطمه نوری</td><td>احمد نوری</td><td><span class="badge badge-info">A-12</span></td><td>1404/03/10 14:00</td><td>—</td><td><span class="badge badge-info">داخل</span></td>
-<td class="text-center"><button class="btn btn-sm btn-success"><i class="la la-sign-out"></i> ثبت خروج</button></td></tr>
-<tr><td>۲</td><td class="font-weight-bold">محمد رحیمی</td><td>علی رحیمی</td><td><span class="badge badge-info">B-07</span></td><td>1404/03/09 10:30</td><td>1404/03/09 18:00</td><td><span class="badge badge-secondary">خروج</span></td>
-<td class="text-center"><div class="btn-group btn-group-sm"><button class="btn btn-outline-primary"><i class="la la-eye"></i></button></div></td></tr>
-</tbody></table></div>
-</div></div></div></div></div>
+
 @endsection

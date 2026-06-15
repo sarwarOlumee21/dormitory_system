@@ -19,6 +19,8 @@ Route::prefix('resident')->name('resident.')->group(function () {
 
 Route::prefix('contracts')->name('contracts.')->group(function () {
     Route::get('/contracts_register', [ContractsController::class, 'ContractsRegister'])->name('register');
+    Route::get('/contracts_rules', [ContractsController::class, 'ContractsRules'])->name('rules');
+    Route::post('/contracts_rules', [ContractsController::class, 'SaveContractRules'])->name('rules.save');
     Route::get('/contracts_list', [ContractsController::class, 'ContractsList'])->name('list');
 });
 

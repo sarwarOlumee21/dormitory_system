@@ -39,6 +39,9 @@
           <li class="{{ request()->routeIs('contracts.register') ? 'active' : '' }}">
             <a href="{{ route('contracts.register') }}">ثبت قرارداد</a>
           </li>
+          <li class="{{ request()->routeIs('contracts.rules') ? 'active' : '' }}">
+            <a href="{{ route('contracts.rules') }}">ثبت قوانین</a>
+          </li>
           <li class="{{ request()->routeIs('contracts.list') ? 'active' : '' }}">
             <a href="{{ route('contracts.list') }}">لیست قراردادها</a>
           </li>
@@ -85,13 +88,6 @@
         <a href="{{ route('reports.index') }}">
           <i class="la la-bar-chart"></i>
           <span class="menu-title">گزارشات</span>
-        </a>
-      </li>
-
-      <li class="{{ request()->routeIs('settings.index') ? 'active' : '' }}">
-        <a href="{{ route('settings.index') }}">
-          <i class="la la-cog"></i>
-          <span class="menu-title">تنظیمات</span>
         </a>
       </li>
 
